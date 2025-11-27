@@ -18,10 +18,10 @@ const snake = [{
 }];
 for (let row = 0; row < rows; row++){
     for (let col = 0; col < cols; col++){
-    const block = document.createElement('div');
+    const block = document.createElement('div'); //nested loop creates block
     block.classList.add('block'); 
-    board.appendChild(block);
-    block.innerText = `${row}-${col}`;
+    board.appendChild(block); //blocks are append in the board
+    block.innerText = `${row}-${col}`; 
     // block.innerText = row+ '-' +col;
     blocks[`${row}-${col}`] = block;
     }
@@ -31,7 +31,7 @@ for (let row = 0; row < rows; row++){
 function render(){
 
     snake.forEach(segment=>{
-        blocks[`${segment.x}-${segment.y}`].classList.add('fil');
+        blocks[`${segment.x}-${segment.y}`].classList.add('fill');
     })
 }
 
