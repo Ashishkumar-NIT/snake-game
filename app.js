@@ -7,12 +7,12 @@ const cols = Math.floor(board.clientWidth / blockWidth);
 
 const blocks = [];
 const snake = [
-    {
-    x:1, y: 3
+    { 
+    x:1, y:3
     },];
 
 
-let direction = "right ";
+let direction = "right";
 
 
 for (let row = 0; row < rows; row++){
@@ -51,13 +51,31 @@ setInterval(()=>{
         head = {x:snake[0].x+1,y:snake[0].y}
     }
 
+    
+
     snake.forEach(segment =>{
-         blocks[`${segment.x}-${segment.y}`].classList.remove('fill')
+         blocks[`${segment.x}-${segment.y}`].classList.remove("fill")
     })
     
     snake.unshift(head)
     snake.pop()
 
-
     render()
-},500);
+},200);
+
+
+// ArrowDown
+// app.js:67 ArrowUp
+// app.js:67 ArrowLeft
+// app.js:67 ArrowRight
+addEventListener("keydown", (event)=>{
+    if(event.key == "ArrowUp"){
+        direction="up"
+    }else if(event.key == "ArrowDown"){
+        direction = "down"
+    }else if(event.key == "ArrowLeft"){
+        direction="left"
+    }else if(event.key == "ArrowRight"){
+        direction ="right"
+    }
+})
