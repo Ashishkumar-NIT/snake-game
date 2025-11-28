@@ -5,15 +5,19 @@ const blockHeight = 50;
 const rows = Math.floor(board.clientHeight / blockHeight);
 const cols = Math.floor(board.clientWidth / blockWidth);
 
-const blocks = [];
-const snake = [
-    { 
-    x:1, y:3
-    },];
+let intervalID = null;
+let food = {x:Math.floor(Math.random() * rows),y:Math.floor(Math.random() * cols)}
 
+const blocks = [];
+const snake =[{x:Math.floor(Math.random() * 10 ),y:Math.floor(Math.random() * 10)}]
+//  [
+//     { 
+//     x:1, y:3
+//    
+// let any = ["up","down","right","left"];
+// let direction =any[Math.floor(Math.random() * 1 ) +3 ,Math.floor(Math.random() * 1) + 4];
 
 let direction = "right";
-
 
 for (let row = 0; row < rows; row++){
     for (let col = 0; col < cols; col++){
@@ -26,18 +30,13 @@ for (let row = 0; row < rows; row++){
     }
 }
 
-
+??*Z)QYBV)6Bn_g
 function render(){
-
-    snake.forEach(segment=>{
-        blocks[`${segment.x}-${segment.y}`].classList.add('fill');
-    })
-}
-
-setInterval(()=>{
 
     let head = null;
 
+    blocks[`${food.x}-${food.y}`].classList.add("food");
+    
     if(direction === "left"){
         head = {x:snake[0].x,y:snake[0].y-1}
     }
@@ -53,6 +52,7 @@ setInterval(()=>{
 
     if(head.x < 0 || head.x >= rows || head.y < 0 || head.y >=cols){
         alert("Game Over");
+        clearInterval(intervalID)
     }
     
 
@@ -63,6 +63,12 @@ setInterval(()=>{
     snake.unshift(head)
     snake.pop()
 
+    snake.forEach(segment=>{
+        blocks[`${segment.x}-${segment.y}`].classList.add('fill');
+    })
+}
+
+intervalID = setInterval(()=>{
     render()
 },200);
 

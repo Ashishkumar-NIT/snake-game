@@ -13,9 +13,13 @@ html,body{
     /* BACKGROUND COLOR */
     --bg-primary-color: #0c0c0c;
     --bg-fill-color: #e8e8e8;
+    --bg-food-color:#ff3b3b; 
+     
 
     /* TEXT COLOR */
     --text-primary-color: #f0f0f0;
+
+    /*  */
 
     /* SPACING VARIABLES */
     --space-xs: 4px;
@@ -89,4 +93,6 @@ section .infos{
 .fill{
     background: var(--bg-fill-color);
 }
-
+.food{
+    background: var(--bg-food-color);
+}
