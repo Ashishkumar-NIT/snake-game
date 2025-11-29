@@ -123,6 +123,7 @@ startButton.addEventListener("click", () =>{
     },1000)
 })
 
+// Game restart logic
 restartButton.addEventListener("click", restartgame);
 
 function restartgame(){
