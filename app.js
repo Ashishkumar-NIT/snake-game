@@ -77,6 +77,7 @@ function render(){
         return;
     }
     
+    //consume food + snake length++ LOGIC
     if(head.x == food.x && head.y == food.y){
         blocks[`${food.x}-${food.y}`].classList.remove("food");
 
