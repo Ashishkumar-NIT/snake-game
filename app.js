@@ -5,11 +5,16 @@ const modal = document.querySelector(".modal");
 const startgameModal = document.querySelector(".start-game");
 const gameoverModal = document.querySelector(".game-over");
 
+// ACCESING ELEMENTS USING DOM EVENTS
+const highscoreElement = document.querySelector("#high-score");
+const scoreElement = document.querySelector("#score");
+const timeElement = document.querySelector("#time")
 
 const blockWidth = 50;
 const blockHeight = 50;
 
 
+let score = 0;
 
 highscoreElement.innerText = highscore;
 
@@ -122,6 +127,9 @@ function restartgame(){
         snake =[{x:Math.floor(Math.random() * 10 ),y:Math.floor(Math.random() * 10)}]
         food = {x:Math.floor(Math.random() * rows),y:Math.floor(Math.random() * cols)}
         intervalID = setInterval(() => {render()},300);
+
+        score = 0
+         scoreElement.innerText = score;
 
 
     }
