@@ -15,11 +15,13 @@ const timeElement = document.querySelector("#time")
 const blockWidth = 50;
 const blockHeight = 50;
 
+// Game Infos
 let highscore = localStorage.getItem("highscore") || 0;
 let score = 0;
 let time = '00-00'
 highscoreElement.innerText = highscore;
 
+// Dynamically the blocks appear as per screen size
 const rows = Math.floor(board.clientHeight / blockHeight);
 const cols = Math.floor(board.clientWidth / blockWidth);
 
