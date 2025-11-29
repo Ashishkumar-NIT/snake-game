@@ -22,7 +22,6 @@ const rows = Math.floor(board.clientHeight / blockHeight);
 const cols = Math.floor(board.clientWidth / blockWidth);
 
 let intervalID = null;
-// let timerIntervalId = null;
 let food = {x:Math.floor(Math.random() * rows),y:Math.floor(Math.random() * cols)}
 
 const blocks = [];
@@ -59,7 +58,7 @@ function render(){
         head = {x:snake[0].x+1,y:snake[0].y}
     }
 
-    // WALL COLLISION LOGIC
+    
     if(head.x < 0 || head.x >= rows || head.y < 0 || head.y >=cols){
         // alert("Game Over");
         clearInterval(intervalID);
@@ -69,7 +68,7 @@ function render(){
         gameoverModal.style.display = "flex";
         return;
     }
-    //consume food + snake length++ LOGIC
+    
     if(head.x == food.x && head.y == food.y){
         blocks[`${food.x}-${food.y}`].classList.remove("food");
 
@@ -78,7 +77,6 @@ function render(){
 
         score += 10;
         scoreElement.innerText = score;
-
         if(score > highscore){
             highscore = score;
             localStorage.setItem("highscore", highscore.toString())
@@ -136,6 +134,7 @@ function restartgame(){
 
     }
 
+  
 // ArrowDown
 // app.js:67 ArrowUp
 // app.js:67 ArrowLeft
