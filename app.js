@@ -5,17 +5,11 @@ const modal = document.querySelector(".modal");
 const startgameModal = document.querySelector(".start-game");
 const gameoverModal = document.querySelector(".game-over");
 
-// ACCESING ELEMENTS USING DOM EVENTS
-const highscoreElement = document.querySelector("#high-score");
-const scoreElement = document.querySelector("#score");
-const timeElement = document.querySelector("#time")
 
 const blockWidth = 50;
 const blockHeight = 50;
 
-let highscore = localStorage.getItem("highscore") || 0
-let score = 0;
-let time = '00-00'
+
 
 highscoreElement.innerText = highscore;
 
@@ -23,7 +17,7 @@ const rows = Math.floor(board.clientHeight / blockHeight);
 const cols = Math.floor(board.clientWidth / blockWidth);
 
 let intervalID = null;
-let timerIntervalId = null;
+// let timerIntervalId = null;
 let food = {x:Math.floor(Math.random() * rows),y:Math.floor(Math.random() * cols)}
 
 const blocks = [];
@@ -84,17 +78,12 @@ function render(){
             highscore = score;
             localStorage.setItem("highscore", highscore.toString())
         }
-        
-        // let oldscore = score
-        // newscore = '/'
-        // highscore = (oldscore > newscore || newscore > oldscore)
-        // highscoreElement.innerText = highscore
     }
 
     snake.forEach(segment =>{
          blocks[`${segment.x}-${segment.y}`].classList.remove("fill")
     })
-    
+
     snake.unshift(head)
     snake.pop()
 
@@ -102,7 +91,6 @@ function render(){
         blocks[`${segment.x}-${segment.y}`].classList.add('fill');
     })
 }
-
 
 startButton.addEventListener("click", () =>{
     modal.style.display= "none";
@@ -124,26 +112,7 @@ startButton.addEventListener("click", () =>{
 
 restartButton.addEventListener("click", restartgame);
 
-function restartgame(){
-        highscoreElement.innerText = highscore;
-        blocks[`${food.x}-${food.y}`].classList.remove("food");
-        snake.forEach(segment=>{
-        blocks[`${segment.x}-${segment.y}`].classList.remove('fill')})
-        score = 0
-        time='00-00'
 
-        scoreElement.innerText = score;
-        timeElement.innerText = time;
-        // highscoreElement.innertext = highscore;
-
-
-        modal.style.display= "none";
-        snake =[{x:Math.floor(Math.random() * 10 ),y:Math.floor(Math.random() * 10)}]
-        food = {x:Math.floor(Math.random() * rows),y:Math.floor(Math.random() * cols)}
-        intervalID = setInterval(() => {render()},300);
-
-
-    }
 
 // ArrowDown
 // app.js:67 ArrowUp
