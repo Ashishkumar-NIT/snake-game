@@ -100,19 +100,7 @@ function render(){
 startButton.addEventListener("click", () =>{
     modal.style.display= "none";
     intervalID = setInterval(() => { render()},300);
-    timerIntervalId = setInterval(() => {
-        let [min,sec] = time.split("-").map(Number)
-
-        if(sec == 59) {
-            min += 1
-            sec = 0
-        }else{
-            sec += 1
-        }
-
-        time = `${min}-${sec}`
-        timeElement.innerText = time;
-    },1000)
+    
 })
 
 restartButton.addEventListener("click", restartgame);
