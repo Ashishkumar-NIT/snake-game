@@ -1,3 +1,4 @@
+// ACCESING ELEMENTS USING DOM EVENTS
 const board = document.querySelector('.board');
 const startButton = document.querySelector(".btn-start"); 
 const restartButton = document.querySelector(".btn-restart");
@@ -5,11 +6,12 @@ const modal = document.querySelector(".modal");
 const startgameModal = document.querySelector(".start-game");
 const gameoverModal = document.querySelector(".game-over");
 
-// ACCESING ELEMENTS USING DOM EVENTS
+
 const highscoreElement = document.querySelector("#high-score");
 const scoreElement = document.querySelector("#score");
 const timeElement = document.querySelector("#time")
 
+// Setting the size of snake block
 const blockWidth = 50;
 const blockHeight = 50;
 
