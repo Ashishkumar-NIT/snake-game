@@ -25,9 +25,11 @@ highscoreElement.innerText = highscore;
 const rows = Math.floor(board.clientHeight / blockHeight);
 const cols = Math.floor(board.clientWidth / blockWidth);
 
+// Random Snake food appearence
 let intervalID = null;
 let food = {x:Math.floor(Math.random() * rows),y:Math.floor(Math.random() * cols)}
 
+// Random snake start position
 const blocks = [];
 let snake =[{x:Math.floor(Math.random() * 10 ),y:Math.floor(Math.random() * 10)}]
 
