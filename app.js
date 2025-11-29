@@ -1,21 +1,33 @@
 const board = document.querySelector('.board');
+const startButton = document.querySelector(".btn-start"); 
+const restartButton = document.querySelector(".btn-restart");
+const modal = document.querySelector(".modal");
+const startgameModal = document.querySelector(".start-game");
+const gameoverModal = document.querySelector(".game-over");
+
+// ACCESING ELEMENTS USING DOM EVENTS
+const highscoreElement = document.querySelector("#high-score");
+const scoreElement = document.querySelector("#score");
+const timeElement = document.querySelector("#time")
+
 const blockWidth = 50;
 const blockHeight = 50;
+
+let highscore = localStorage.getItem("highscore") || 0
+let score = 0;
+let time = '00-00'
+
+highscoreElement.innerText = highscore;
 
 const rows = Math.floor(board.clientHeight / blockHeight);
 const cols = Math.floor(board.clientWidth / blockWidth);
 
 let intervalID = null;
+let timerIntervalId = null;
 let food = {x:Math.floor(Math.random() * rows),y:Math.floor(Math.random() * cols)}
 
 const blocks = [];
-const snake =[{x:Math.floor(Math.random() * 10 ),y:Math.floor(Math.random() * 10)}]
-//  [
-//     { 
-//     x:1, y:3
-//    
-// let any = ["up","down","right","left"];
-// let direction =any[Math.floor(Math.random() * 1 ) +3 ,Math.floor(Math.random() * 1) + 4];
+let snake =[{x:Math.floor(Math.random() * 10 ),y:Math.floor(Math.random() * 10)}]
 
 let direction = "right";
 
@@ -24,8 +36,7 @@ for (let row = 0; row < rows; row++){
     const block = document.createElement('div'); //nested loop creates block
     block.classList.add('block'); 
     board.appendChild(block); //blocks are append in the board
-    block.innerText = `${row}-${col}`; 
-    // block.innerText = row+ '-' +col;
+    // block.innerText = `${row}-${col}`; 
     blocks[`${row}-${col}`] = block;
     }
 }
@@ -49,16 +60,35 @@ function render(){
         head = {x:snake[0].x+1,y:snake[0].y}
     }
 
+    // WALL COLLISION LOGIC
     if(head.x < 0 || head.x >= rows || head.y < 0 || head.y >=cols){
-        alert("Game Over");
-        clearInterval(intervalID)
+        // alert("Game Over");
+        clearInterval(intervalID);
+
+        modal.style.display = "flex";
+        startgameModal.style.display = "none";
+        gameoverModal.style.display = "flex";
+        return;
     }
-    
+    //consume food + snake length++ LOGIC
     if(head.x == food.x && head.y == food.y){
         blocks[`${food.x}-${food.y}`].classList.remove("food");
 
         food = {x:Math.floor(Math.random() * rows),y:Math.floor(Math.random() * cols)}
         snake.unshift(head)
+
+        score += 10;
+        scoreElement.innerText = score;
+
+        if(score > highscore){
+            highscore = score;
+            localStorage.setItem("highscore", highscore.toString())
+        }
+        
+        // let oldscore = score
+        // newscore = '/'
+        // highscore = (oldscore > newscore || newscore > oldscore)
+        // highscoreElement.innerText = highscore
     }
 
     snake.forEach(segment =>{
@@ -73,10 +103,47 @@ function render(){
     })
 }
 
-// intervalID = setInterval(()=>{ 
-//     render()
-// },200);
 
+startButton.addEventListener("click", () =>{
+    modal.style.display= "none";
+    intervalID = setInterval(() => { render()},300);
+    timerIntervalId = setInterval(() => {
+        let [min,sec] = time.split("-").map(Number)
+
+        if(sec == 59) {
+            min += 1
+            sec = 0
+        }else{
+            sec += 1
+        }
+
+        time = `${min}-${sec}`
+        timeElement.innerText = time;
+    },1000)
+})
+
+restartButton.addEventListener("click", restartgame);
+
+function restartgame(){
+        highscoreElement.innerText = highscore;
+        blocks[`${food.x}-${food.y}`].classList.remove("food");
+        snake.forEach(segment=>{
+        blocks[`${segment.x}-${segment.y}`].classList.remove('fill')})
+        score = 0
+        time='00-00'
+
+        scoreElement.innerText = score;
+        timeElement.innerText = time;
+        // highscoreElement.innertext = highscore;
+
+
+        modal.style.display= "none";
+        snake =[{x:Math.floor(Math.random() * 10 ),y:Math.floor(Math.random() * 10)}]
+        food = {x:Math.floor(Math.random() * rows),y:Math.floor(Math.random() * cols)}
+        intervalID = setInterval(() => {render()},300);
+
+
+    }
 
 // ArrowDown
 // app.js:67 ArrowUp
