@@ -112,7 +112,19 @@ startButton.addEventListener("click", () =>{
 
 restartButton.addEventListener("click", restartgame);
 
+function restartgame(){
+        
+        blocks[`${food.x}-${food.y}`].classList.remove("food");
+        snake.forEach(segment=>{
+            blocks[`${segment.x}-${segment.y}`].classList.remove('fill')});
+        
+        modal.style.display= "none";
+        snake =[{x:Math.floor(Math.random() * 10 ),y:Math.floor(Math.random() * 10)}]
+        food = {x:Math.floor(Math.random() * rows),y:Math.floor(Math.random() * cols)}
+        intervalID = setInterval(() => {render()},300);
 
+
+    }
 
 // ArrowDown
 // app.js:67 ArrowUp
