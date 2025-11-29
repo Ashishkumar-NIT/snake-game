@@ -104,6 +104,7 @@ function render(){
     })
 }
 
+// Game start button logic
 startButton.addEventListener("click", () =>{
     modal.style.display= "none";
     intervalID = setInterval(() => { render()},300);
