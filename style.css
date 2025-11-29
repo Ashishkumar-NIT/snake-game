@@ -52,8 +52,20 @@ html{
 main,section{
     height: 100%;
     width: 100%;
-    /* border: 2px solid purple; */
 }
+
+.btn{
+    border: none;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover{
+    transform: scale(1.1);
+}
+
 section{
     padding: var(--space-2xl);
     height: 100%;
@@ -97,3 +109,21 @@ section .infos{
     background: var(--bg-food-color);
 }
 
+.modal{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    background: #35353587;
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal .start-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+}
