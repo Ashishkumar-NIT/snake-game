@@ -13,9 +13,9 @@ const timeElement = document.querySelector("#time")
 const blockWidth = 50;
 const blockHeight = 50;
 
-
+let highscore = localStorage.getItem("highscore") || 0;
 let score = 0;
-
+let time = '00-00'
 highscoreElement.innerText = highscore;
 
 const rows = Math.floor(board.clientHeight / blockHeight);
@@ -118,7 +118,7 @@ startButton.addEventListener("click", () =>{
 restartButton.addEventListener("click", restartgame);
 
 function restartgame(){
-        
+        highscoreElement.innerText = highscore;
         blocks[`${food.x}-${food.y}`].classList.remove("food");
         snake.forEach(segment=>{
             blocks[`${segment.x}-${segment.y}`].classList.remove('fill')});
@@ -129,8 +129,10 @@ function restartgame(){
         intervalID = setInterval(() => {render()},300);
 
         score = 0
-         scoreElement.innerText = score;
+        time='00-00'
 
+         scoreElement.innerText = score;
+         timeElement.innerText = time;
 
     }
 
