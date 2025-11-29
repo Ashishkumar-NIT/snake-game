@@ -33,6 +33,7 @@ let food = {x:Math.floor(Math.random() * rows),y:Math.floor(Math.random() * cols
 const blocks = [];
 let snake =[{x:Math.floor(Math.random() * 10 ),y:Math.floor(Math.random() * 10)}]
 
+// Initialized the startind direction of snake head
 let direction = "right";
 
 for (let row = 0; row < rows; row++){
