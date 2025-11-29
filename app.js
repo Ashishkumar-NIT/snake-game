@@ -66,7 +66,7 @@ function render(){
         head = {x:snake[0].x+1,y:snake[0].y}
     }
 
-    
+    // WALL COLLISION LOGIC
     if(head.x < 0 || head.x >= rows || head.y < 0 || head.y >=cols){
         // alert("Game Over");
         clearInterval(intervalID);
