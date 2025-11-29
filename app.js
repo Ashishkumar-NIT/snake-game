@@ -30,7 +30,6 @@ for (let row = 0; row < rows; row++){
     }
 }
 
-??*Z)QYBV)6Bn_g
 function render(){
 
     let head = null;
@@ -55,6 +54,11 @@ function render(){
         clearInterval(intervalID)
     }
     
+    if(head.x == food.x && head.y == food.y){
+        blocks[`${food.x}-${food.y}`].classList.remove("food");
+
+        food = {x:Math.floor(Math.random() * rows),y:Math.floor(Math.random() * cols)}
+    }
 
     snake.forEach(segment =>{
          blocks[`${segment.x}-${segment.y}`].classList.remove("fill")
@@ -68,9 +72,9 @@ function render(){
     })
 }
 
-intervalID = setInterval(()=>{
-    render()
-},200);
+// intervalID = setInterval(()=>{ 
+//     render()
+// },200);
 
 
 // ArrowDown
