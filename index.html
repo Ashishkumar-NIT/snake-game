@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <!-- css -->
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <main>
@@ -22,7 +27,7 @@
                 </div>
                 <div class="info">
                     <h1>Time: 
-                        <span id="time">00-00</span>
+                        <span id="time">MM-SS</span>
                     </h1>
                 </div>
             </div>
@@ -32,12 +37,12 @@
 
         <div class="modal">
             <div class="start-game">
-                <h3>Welcome to the Snake Game</h3>
-                <button class="btn btn-start">Start Game</button>
+                <h3 >Welcome to the Snake Game</h3>
+                <button class="btn btn-start btn-danger">Start Game</button>
             </div>
             <div class="game-over">
                 <h3>Game Over</h3>
-                <button class="btn btn-restart">Restart Game</button>
+                <button class="btn btn-restart btn-secondary">Restart Game</button>
             </div>
         </div>
     </main>
