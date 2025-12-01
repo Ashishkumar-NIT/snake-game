@@ -144,7 +144,6 @@ function restartgame(){
          timeElement.innerText = time;
 
     }
-
 // DOM events key to control snake via Arrow keys
 // ArrowDown
 // app.js:67 ArrowUp

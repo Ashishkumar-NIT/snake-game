@@ -19,11 +19,8 @@ html,body{
     --bg-fill-color: #e8e8e8;
     --bg-food-color:#ff3b3b; 
      
-
     /* TEXT COLOR */
     --text-primary-color: #f0f0f0;
-
-    /*  */
 
     /* SPACING VARIABLES */
     --space-xs: 4px;
@@ -34,7 +31,6 @@ html,body{
     --space-2xl: 40px;
     --space-3xs: 48px;
     
-
     /* BORDER colors*/
     --border-primary-color: #333333;
 
@@ -46,7 +42,6 @@ html,body{
     --border-radius-xl: 20px;
     --border-radius-2xl: 24px;
 }
-
 
 html{
     background: var(--bg-primary-color);
