@@ -45,10 +45,8 @@ for (let row = 0; row < rows; row++){
     blocks[`${row}-${col}`] = block;
     }
 }
-
 // Rendered the game & core logic of game
 function render(){
-
     let head = null;
 
     blocks[`${food.x}-${food.y}`].classList.add("food");
@@ -65,7 +63,6 @@ function render(){
     else if(direction === "down"){
         head = {x:snake[0].x+1,y:snake[0].y}
     }
-
     // WALL COLLISION LOGIC
     if(head.x < 0 || head.x >= rows || head.y < 0 || head.y >=cols){
         // alert("Game Over");
@@ -75,8 +72,7 @@ function render(){
         startgameModal.style.display = "none";
         gameoverModal.style.display = "flex";
         return;
-    }
-    
+    }  
     //consume food + snake length++ LOGIC
     if(head.x == food.x && head.y == food.y){
         blocks[`${food.x}-${food.y}`].classList.remove("food");
@@ -91,7 +87,6 @@ function render(){
             localStorage.setItem("highscore", highscore.toString())
         }
     }
-
     snake.forEach(segment =>{
          blocks[`${segment.x}-${segment.y}`].classList.remove("fill")
     })
@@ -122,10 +117,10 @@ startButton.addEventListener("click", () =>{
         timeElement.innerText = time;
     },1000)
 })
-
-// Game restart logic
+// Game restart button logic
 restartButton.addEventListener("click", restartgame);
 
+// restart logic
 function restartgame(){
         highscoreElement.innerText = highscore;
         blocks[`${food.x}-${food.y}`].classList.remove("food");
